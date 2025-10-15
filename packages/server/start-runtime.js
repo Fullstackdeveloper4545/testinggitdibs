@@ -1,23 +1,29 @@
 #!/usr/bin/env node
 'use strict'
 
-// Runtime launcher that starts the compiled server without oclif
+// Runtime launcher that prefers compiled dist, but falls back to TS sources.
 async function main() {
   try {
-    // Initialize DB/DataSource first
-    const DataSource = require('./dist/DataSource')
+    let DataSource
+    let Server
+    try {
+      DataSource = require('./dist/DataSource')
+      Server = require('./dist/index')
+    } catch (_) {
+      // dist may not exist; fall back to ts at runtime
+      require('ts-node/register')
+      DataSource = require('./src/DataSource')
+      Server = require('./src/index')
+    }
+
     if (DataSource && typeof DataSource.init === 'function') {
       await DataSource.init()
     }
-
-    // Start HTTP server
-    const Server = require('./dist/index')
     if (Server && typeof Server.start === 'function') {
       await Server.start()
       return
     }
-
-    console.error('Failed to start: dist/index missing start()')
+    console.error('Failed to start server: start() not found')
     process.exit(1)
   } catch (err) {
     console.error('Startup error:', err)
