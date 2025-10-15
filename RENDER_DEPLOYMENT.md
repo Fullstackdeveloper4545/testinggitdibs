@@ -19,10 +19,10 @@ Use the `render.yaml` file for Docker-based deployment:
 3. The deployment will use the existing Dockerfile
 
 **Configuration:**
-- **Build Command:** `pnpm install && pnpm build`
+- **Build Command:** `npm install -g pnpm && pnpm install && pnpm build`
 - **Start Command:** `pnpm start`
 - **Health Check:** `/api/v1/ping`
-- **Environment:** Node.js with Docker
+- **Environment:** Node.js
 
 ### Option 2: Direct Node.js Deployment
 
@@ -106,7 +106,7 @@ Configure these environment variables in your Render dashboard:
 3. **Configure Service**
    - **Name:** `flowise` (or your preferred name)
    - **Environment:** `Node`
-   - **Build Command:** `pnpm install && pnpm build`
+   - **Build Command:** `npm install -g pnpm && pnpm install && pnpm build`
    - **Start Command:** `pnpm start`
    - **Health Check Path:** `/api/v1/ping`
 

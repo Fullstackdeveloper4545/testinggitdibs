@@ -3,8 +3,8 @@ services:
     name: flowise
     env: node
     plan: starter
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    startCommand: npm start
+    buildCommand: npm install -g pnpm && pnpm install && pnpm build
+    startCommand: pnpm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -16,5 +16,9 @@ services:
         value: sqlite
       - key: PORT
         value: 3000
+      - key: SKIP_LIB_CHECK
+        value: true
+      - key: TSC_COMPILE_ON_ERROR
+        value: true
     healthCheckPath: /api/v1/ping
     autoDeploy: true

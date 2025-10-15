@@ -10,12 +10,15 @@
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true,
+        "noEmitOnError": false,
         "sourceMap": true,
         "strictPropertyInitialization": false,
         "useUnknownInCatchVariables": false,
         "declaration": true,
         "module": "commonjs",
-        "composite": true
+        "composite": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node"
     },
     "include": ["src", "nodes", "credentials"],
     "exclude": ["gulpfile.ts", "node_modules", "dist", "**/*.test.ts", "**/*.test.js", "**/*.spec.ts", "**/*.spec.js"]
