@@ -3,7 +3,7 @@ services:
     name: flowise
     env: node
     plan: starter
-    buildCommand: npm install -g pnpm && pnpm install && pnpm build
+    buildCommand: npm install -g pnpm@latest && pnpm install --frozen-lockfile && pnpm build
     startCommand: pnpm start
     envVars:
       - key: NODE_ENV
