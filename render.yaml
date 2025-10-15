@@ -12,6 +12,8 @@ services:
         value: --max-old-space-size=8192
       - key: HOST
         value: 0.0.0.0
+      - key: PORT
+        value: 3001
       - key: PUPPETEER_SKIP_DOWNLOAD
         value: true
       - key: DATABASE_TYPE
