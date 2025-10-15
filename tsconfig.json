@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        "lib": ["es2021"],
+        "target": "es2021",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "module": "commonjs",
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strictPropertyInitialization": false,
+        "declaration": true,
+        "resolveJsonModule": true,
+        "useUnknownInCatchVariables": false
+    },
+    "include": [
+        "packages/*/src/**/*.ts",
+        "packages/*/nodes/**/*.ts",
+        "packages/*/credentials/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.ts",
+        "**/*.test.js",
+        "**/*.spec.ts",
+        "**/*.spec.js",
+        "packages/*/gulpfile.ts"
+    ],
+    "references": [
+        {
+            "path": "./packages/components"
+        },
+        {
+            "path": "./packages/server"
+        },
+        {
+            "path": "./packages/api-documentation"
+        }
+    ]
+}
