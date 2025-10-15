@@ -14,7 +14,7 @@
         "build": "turbo run build",
         "build-force": "pnpm clean && turbo run build --force",
         "dev": "turbo run dev --parallel --no-cache",
-        "start": "node packages/server/start.js",
+        "start": "pnpm --filter \"./packages/server\" build && node packages/server/start-runtime.js",
         "start-worker": "node packages/server/dist/index.js --MODE=QUEUE",
         "user": "node packages/server/dist/index.js --user",
         "test": "turbo run test",
