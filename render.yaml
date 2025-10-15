@@ -10,12 +10,12 @@ services:
         value: production
       - key: NODE_OPTIONS
         value: --max-old-space-size=8192
+      - key: HOST
+        value: 0.0.0.0
       - key: PUPPETEER_SKIP_DOWNLOAD
         value: true
       - key: DATABASE_TYPE
         value: sqlite
-      - key: PORT
-        value: 3000
       - key: SKIP_LIB_CHECK
         value: true
       - key: TSC_COMPILE_ON_ERROR
