@@ -120,7 +120,8 @@ class CustomRetriever<V extends VectorStore> extends VectorStoreRetriever<V> {
     topK = 4
 
     constructor(input: RetrieverInput<V>) {
-        super(input)
+        // Cast to the stricter VectorStoreRetrieverInput to satisfy types while preserving runtime behavior
+        super(input as unknown as VectorStoreRetrieverInput<V>)
         this.topK = input.topK ?? this.topK
         this.resultFormat = input.resultFormat ?? this.resultFormat
     }
