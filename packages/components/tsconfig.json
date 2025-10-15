@@ -20,6 +20,6 @@
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node"
     },
-    "include": ["src", "nodes", "credentials"],
+    "include": ["src", "nodes", "credentials", "evaluation"],
     "exclude": ["gulpfile.ts", "node_modules", "dist", "**/*.test.ts", "**/*.test.js", "**/*.spec.ts", "**/*.spec.js"]
 }

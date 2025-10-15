@@ -19,7 +19,8 @@
     "include": [
         "packages/*/src/**/*.ts",
         "packages/*/nodes/**/*.ts",
-        "packages/*/credentials/**/*.ts"
+        "packages/*/credentials/**/*.ts",
+        "packages/*/evaluation/**/*.ts"
     ],
     "exclude": [
         "node_modules",
