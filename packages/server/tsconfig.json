@@ -13,6 +13,7 @@
         "sourceMap": true,
         "strictPropertyInitialization": false,
         "declaration": true,
+        "noEmitOnError": false,
         "composite": true
     },
     "include": ["src/**/*.ts"],

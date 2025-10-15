@@ -16,11 +16,13 @@ const FollowUpPromptType = z
     })
     .describe('Generate Follow Up Prompts')
 
+export type FollowUpPromptResult = z.infer<typeof FollowUpPromptType>
+
 export const generateFollowUpPrompts = async (
     followUpPromptsConfig: FollowUpPromptConfig,
     apiMessageContent: string,
     options: ICommonObject
-) => {
+): Promise<FollowUpPromptResult | undefined> => {
     if (followUpPromptsConfig) {
         if (!followUpPromptsConfig.status) return undefined
         const providerConfig = followUpPromptsConfig[followUpPromptsConfig.selectedProvider]
