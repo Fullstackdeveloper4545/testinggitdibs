@@ -372,15 +372,15 @@ let serverApp: App | undefined
 export async function start(): Promise<void> {
     serverApp = new App()
 
-    const host = process.env.HOST
-    const port = parseInt(process.env.PORT || '', 10) || 3000
+    const host = '0.0.0.0'
+    const port = Number(process.env.PORT) || 3000
     const server = http.createServer(serverApp.app)
 
     await serverApp.initDatabase()
     await serverApp.config()
 
     server.listen(port, host, () => {
-        logger.info(`⚡️ [server]: Flowise Server is listening at ${host ? 'http://' + host : ''}:${port}`)
+        logger.info(`⚡️ [server]: Flowise Server is listening at http://${host}:${port}`)
     })
 }
 
