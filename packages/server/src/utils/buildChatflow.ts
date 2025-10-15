@@ -860,7 +860,7 @@ const checkIfStreamValid = async (
 
     let isStreamValid = false
     for (const endingNode of endingNodes) {
-        const endingNodeData = endingNode.data || {} // Ensure endingNodeData is never undefined
+        const endingNodeData: any = endingNode?.data ?? {} // Ensure endingNodeData is never undefined
 
         const isEndingNode = endingNodeData?.outputs?.output === 'EndingNode'
 
@@ -869,8 +869,8 @@ const checkIfStreamValid = async (
 
         if (
             endingNodeData.outputs &&
-            Object.keys(endingNodeData.outputs).length &&
-            !Object.values(endingNodeData.outputs ?? {}).includes(endingNodeData.name)
+            Object.keys(endingNodeData.outputs as any).length &&
+            !Object.values((endingNodeData.outputs as any) ?? {}).includes(endingNodeData.name)
         ) {
             throw new InternalFlowiseError(
                 StatusCodes.INTERNAL_SERVER_ERROR,

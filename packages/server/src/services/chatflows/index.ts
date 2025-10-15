@@ -334,7 +334,7 @@ const updateChatflow = async (
             appServer.usageCacheManager
         )
     }
-    if (updateChatFlow.type || updateChatFlow.type === '') {
+    if (typeof updateChatFlow.type !== 'undefined') {
         validateChatflowType(updateChatFlow.type)
     } else {
         updateChatFlow.type = chatflow.type

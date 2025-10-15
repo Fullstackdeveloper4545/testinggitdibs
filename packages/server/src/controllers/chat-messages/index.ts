@@ -71,7 +71,9 @@ const getAllChatMessages = async (req: Request, res: Response, next: NextFunctio
         const messageId = req.query?.messageId as string | undefined
         const startDate = req.query?.startDate as string | undefined
         const endDate = req.query?.endDate as string | undefined
-        const feedback = req.query?.feedback as boolean | undefined
+        const parseBoolean = (val: any): boolean | undefined =>
+            val === 'true' || val === true ? true : val === 'false' || val === false ? false : undefined
+        const feedback = parseBoolean(req.query?.feedback)
 
         const { page, limit } = getPageAndLimitParams(req)
 
@@ -117,7 +119,9 @@ const getAllInternalChatMessages = async (req: Request, res: Response, next: Nex
         const messageId = req.query?.messageId as string | undefined
         const startDate = req.query?.startDate as string | undefined
         const endDate = req.query?.endDate as string | undefined
-        const feedback = req.query?.feedback as boolean | undefined
+        const parseBoolean = (val: any): boolean | undefined =>
+            val === 'true' || val === true ? true : val === 'false' || val === false ? false : undefined
+        const feedback = parseBoolean(req.query?.feedback)
         let feedbackTypeFilters = req.query?.feedbackType as ChatMessageRatingType[] | undefined
         if (feedbackTypeFilters) {
             feedbackTypeFilters = getFeedbackTypeFilters(feedbackTypeFilters)
@@ -199,7 +203,9 @@ const removeAllChatMessages = async (req: Request, res: Response, next: NextFunc
 
         if (!chatId) {
             const isFeedback = feedbackTypeFilters?.length ? true : false
-            const hardDelete = req.query?.hardDelete as boolean | undefined
+            const parseBoolean = (val: any): boolean | undefined =>
+                val === 'true' || val === true ? true : val === 'false' || val === false ? false : undefined
+            const hardDelete = parseBoolean(req.query?.hardDelete)
 
             const messages = await utilGetChatMessage({
                 chatflowid,
