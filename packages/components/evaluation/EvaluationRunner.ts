@@ -34,23 +34,28 @@ export class EvaluationRunner {
                 let selectedModel = undefined
                 let selectedProvider = undefined
                 if (val && val.length > 0) {
-                    let modelName = ''
-                    let providerName = ''
                     for (let i = 0; i < val.length; i++) {
                         const metric = val[i]
-                        if (metric && typeof metric === 'object') {
-                            modelName = metric['model']
-                            providerName = metric['provider']
-                        } else {
-                            modelName = JSON.parse(metric)['model']
-                            providerName = JSON.parse(metric)['provider']
+                        // parse defensively; metric may be null, string, or object
+                        let parsed: any = null
+                        if (typeof metric === 'string') {
+                            try {
+                                parsed = JSON.parse(metric)
+                            } catch {
+                                parsed = null
+                            }
+                        } else if (metric && typeof metric === 'object') {
+                            parsed = metric
                         }
 
-                        if (modelName) {
-                            selectedModel = modelName
+                        const parsedModel = parsed?.model
+                        const parsedProvider = parsed?.provider
+
+                        if (parsedModel) {
+                            selectedModel = parsedModel
                         }
-                        if (providerName) {
-                            selectedProvider = providerName
+                        if (parsedProvider) {
+                            selectedProvider = parsedProvider
                         }
                     }
                 }
